@@ -1,11 +1,18 @@
 <script lang="ts">
+	// In the +page.server.ts file, I can return something other than 'data'. in this case, I am returning 'records', which drills down into the object. but whatever goes into the return needs to be accessed with export let data on +page.svelte
+
 	export let data;
-	console.log('records data', data.records);
+	console.log('records data', data);
 </script>
 
 {#each data.records as record}
-	{record.name}
-	{record.text}
+	<div class="outline border m-4">
+		<div class="bold text-xl">
+			{record.name}
+		</div>
+
+		{record.text}
+	</div>
 {/each}
 
 <svelte:head>

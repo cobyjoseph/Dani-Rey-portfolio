@@ -17,52 +17,27 @@ export async function load({ fetch }) {
 
 	try {
 		const res = await fetch(aboutEndpoint, { headers });
-
-		// if (!res.ok) {
-		// 	throw new Error(`Error fetching data: ${res.statusText}`);
-		// }
+		if (!res.ok) {
+			throw new Error(`Error fetching data: ${res.statusText}`);
+		}
 
 		const data = await res.json();
-		console.log('Airtable data:', data);
+		console.log('Raw data:', data);
+		console.log('Fields before map:', data.records[0].fields);
 
 		const records = data.records.map((record) => ({
-			name: record.fields.fld3hToameRi5Ehee,
-			text: record.fields.fldmZb5lYlCdwtiKc
+			name: record.fields['Card name'],
+			text: record.fields.Text
 		}));
 
 		return {
 			records
 		};
 	} catch (error) {
+		console.error('Error in load:', error.message);
 		return {
 			status: 500,
 			error: 'Failed fetching data from Airtable'
 		};
 	}
 }
-
-// export async function load() {
-// 	// Fetch records from Airtable
-// 	const records = await fetchRecords();
-
-// 	// Return data to page
-// 	return {
-// 		props: {
-// 			records
-// 		}
-// 	};
-// }
-// export async function load() {
-// 	return {
-// 		records: [
-// 			{
-// 				name: 'About me',
-// 				text: "Hi, I'm Dani :)\n\nGraphic design is not my passion. Visual communication of messages is. I love getting involved in the microworld of the brands I work..."
-// 			},
-// 			{
-// 				name: 'About you',
-// 				text: '**You have an idea**, or a project with a great potential, and a lot of enthusiasm to see it become a giant in its field; but you have a missing piece...'
-// 			}
-// 		]
-// 	};
-// }
