@@ -9,7 +9,8 @@ export default {
 				primaryDark: '#333333'
 			},
 			fontFamily: {
-				genSans: ['General Sans', 'sans-serif']
+				genSans: ['General Sans', 'sans-serif'],
+        dmSans: ['DM Sans', 'sans-serif;']
 			}
 		}
 	},

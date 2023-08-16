@@ -1,17 +1,12 @@
-// import { AIRTABLE_BASE_ID, AIRTABLE_API_KEY } from '$env/static/private';
-
-import type { PageServerLoad } from './$types';
-
-const AIRTABLE_API_KEY = import.meta.env.VITE_AIRTABLE_API_KEY;
-const AIRTABLE_BASE_ID = import.meta.env.VITE_AIRTABLE_BASE_ID;
-const AIRTABLE_ABOUT_ID = import.meta.env.VITE_AIRTABLE_ABOUT_ID;
-const aboutEndpoint = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_ABOUT_ID}`;
-
-console.log(aboutEndpoint);
+const airtableApiKey = import.meta.env.VITE_AIRTABLE_API_KEY;
+const airtableBaseId = import.meta.env.VITE_AIRTABLE_BASE_ID;
+const airtableAboutTableId = import.meta.env.VITE_AIRTABLE_ABOUT_ID;
+const aboutEndpoint = `https://api.airtable.com/v0/${airtableBaseId}/${airtableAboutTableId}?sort[0][field]=Order&sort[0][direction]=asc`;
+//just create more endpoints for each table
 
 export async function load({ fetch }) {
 	const headers = {
-		Authorization: `Bearer ${AIRTABLE_API_KEY}`,
+		Authorization: `Bearer ${airtableApiKey}`,
 		'Content-Type': 'application/json'
 	};
 
@@ -22,16 +17,16 @@ export async function load({ fetch }) {
 		}
 
 		const data = await res.json();
-		console.log('Raw data:', data);
-		console.log('Fields before map:', data.records[0].fields);
 
-		const records = data.records.map((record) => ({
-			name: record.fields['Card name'],
-			text: record.fields.Text
+		const aboutTable = data.records.map((record) => ({
+			nameEn: record.fields['Card name english'],
+			nameSp: record.fields['Card name espagnol'],
+			textEn: record.fields['Text english'],
+			textSp: record.fields['Text espagnol']
 		}));
 
 		return {
-			records
+			aboutTable
 		};
 	} catch (error) {
 		console.error('Error in load:', error.message);

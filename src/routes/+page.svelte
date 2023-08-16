@@ -1,23 +1,34 @@
 <script lang="ts">
-	// In the +page.server.ts file, I can return something other than 'data'. in this case, I am returning 'records', which drills down into the object. but whatever goes into the return needs to be accessed with export let data on +page.svelte
+	import About from '$lib/components/About.svelte';
+	import Navbar from '$lib/components/Navbar.svelte';
 
+	// In the +page.server.ts file, I can return something other than 'data'. in this case, I am returning 'records', which drills down into the object. but whatever goes into the return needs to be accessed with export let data on +page.svelte
 	export let data;
-	console.log('records data', data);
+	console.log('data', data);
+	console.log('about table', data.aboutTable);
 </script>
 
-{#each data.records as record}
-	<div class="outline border m-4">
-		<div class="bold text-xl">
-			{record.name}
+<div class="flex justify-center font-genSans">
+	<div class="flex flex-col mx-[5%] w-full max-w-[1530px]">
+		<div class="mt-[2rem]">
+			<Navbar />
 		</div>
-
-		{record.text}
+		<div class="mt-[80vh]">
+			<About aboutData={data.aboutTable} />
+		</div>
 	</div>
-{/each}
+</div>
 
 <svelte:head>
 	<link
 		href="https://api.fontshare.com/v2/css?f[]=general-sans@701,200,500,301,201,300,601,600,401,501,400,700"
+		rel="stylesheet"
+	/>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link
+		href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100;0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;0,9..40,1000;1,9..40,100;1,9..40,200;1,9..40,300;1,9..40,400;1,9..40,500;1,9..40,600;1,9..40,700;1,9..40,800;1,9..40,900;1,9..40,1000"
 		rel="stylesheet"
 	/>
 
