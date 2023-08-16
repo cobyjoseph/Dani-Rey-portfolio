@@ -22,7 +22,8 @@ export async function load({ fetch }) {
 			nameEn: record.fields['Card name english'],
 			nameSp: record.fields['Card name espagnol'],
 			textEn: record.fields['Text english'],
-			textSp: record.fields['Text espagnol']
+			textSp: record.fields['Text espagnol'],
+			color: record.fields['Color']
 		}));
 
 		return {

@@ -33,22 +33,29 @@
 	}
 </script>
 
-{#each aboutData as i}
-	<div class=" test max-w-[700px] flex flex-col">
-		<div
-			class="text-xl p-5 max-w-fit translate-y-[50%] bg-primary font-medium border border-primaryDark rounded-2xl"
-		>
-			{$currentLanguage === 'En' ? i.nameEn : i.nameSp}
-		</div>
+<div class="flex">
+	{#each aboutData as i}
+		<div class=" test max-w-[700px] flex flex-col w-[90vw] mr-10">
+			<div
+				class="text-xl p-5 max-w-fit translate-y-[50%] {i.color === 'Dark'
+					? 'bg-primaryDark border-primary text-primary'
+					: 'bg-primary border-primaryDark text-primaryDark'}  font-medium border rounded-2xl"
+			>
+				{$currentLanguage === 'En' ? i.nameEn : i.nameSp}
+			</div>
 
-		<div
-			class="text-[22px] px-7 py-[5rem] justify-center whitespace-pre-line border border-primaryDark rounded-2xl"
-		>
-			{@html formatText($currentLanguage === 'En' ? i.textEn : i.textSp)}
+			<div
+				class="text-[22px] px-7 py-[5rem] justify-center whitespace-pre-line border rounded-2xl {i.color ===
+				'Dark'
+					? 'bg-primaryDark border-primary text-primary'
+					: 'bg-primary border-primaryDark text-primaryDark'}"
+			>
+				{@html formatText($currentLanguage === 'En' ? i.textEn : i.textSp)}
 
-			<!-- {#each formatText($currentLanguage === 'En' ? i.textEn : i.textSp) as paragraph}
+				<!-- {#each formatText($currentLanguage === 'En' ? i.textEn : i.textSp) as paragraph}
 				<p class="my-3">{@html paragraph}</p>
 			{/each} -->
+			</div>
 		</div>
-	</div>
-{/each}
+	{/each}
+</div>
