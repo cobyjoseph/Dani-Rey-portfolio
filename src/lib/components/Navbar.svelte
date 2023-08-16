@@ -2,7 +2,7 @@
 	import { currentLanguage } from '$lib/stores/LanguageStore';
 </script>
 
-<div class="flex justify-between items-center  outline">
+<div class="flex justify-between items-center">
 	<div class=" ">
 		<svg
 			xmlns="http://www.w3.org/2000/svg"

@@ -13,7 +13,7 @@
 		<div class="mt-[2rem]">
 			<Navbar />
 		</div>
-		<div class="mt-[80vh]">
+		<div class="mt-[50vh]">
 			<About aboutData={data.aboutTable} />
 		</div>
 	</div>
