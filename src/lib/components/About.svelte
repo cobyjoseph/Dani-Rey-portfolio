@@ -55,9 +55,20 @@
 	// }
 </script>
 
-<div class="flex items-stretch">
+<div class="flex items-stretch bg-blue-400">
+	<div class=" outline min-w-[20%]">
+		<div class="clampText">
+			{$currentLanguage === 'En' ? 'ARE WE' : 'SOMOS'}
+		</div>
+		<div class="ml-3">
+			{$currentLanguage === 'En' ? 'A GOOD' : 'UN BUEN'}
+		</div>
+		<div class="ml-6">
+			{$currentLanguage === 'En' ? 'MATCH?' : 'MATCH?'}
+		</div>
+	</div>
 	{#each aboutData as i}
-		<div class=" test max-w-[700px] flex flex-col w-[90vw] mr-10">
+		<div class="  max-w-[700px] flex flex-col w-[90vw] mr-10">
 			<div
 				class="  text-xl p-5 max-w-fit translate-y-[50%] {i.color === 'Dark'
 					? 'bg-primaryDark border-primary text-primary'
@@ -67,7 +78,7 @@
 			</div>
 
 			<div
-				class="text-[22px] px-7 pt-[3.4rem] pb-[1rem] justify-center whitespace-pre-line border rounded-2xl flex flex-1 flex-col {i.color ===
+				class="text-[22px] px-7 pt-[3.4rem] pb-[1rem] whitespace-pre-line border rounded-2xl flex flex-1 flex-col {i.color ===
 				'Dark'
 					? 'bg-primaryDark border-primary text-primary'
 					: 'bg-primary border-primaryDark text-primaryDark'}"
@@ -81,3 +92,9 @@
 		</div>
 	{/each}
 </div>
+
+<style>
+	.clampText {
+		font-size: clamp(40%, 60%, 100%);
+	}
+</style>
