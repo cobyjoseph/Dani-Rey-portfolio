@@ -4,40 +4,62 @@
 	export let aboutData;
 
 	function formatText(text) {
-		// Bold IF I USE FONT-SEMIBOLD and FONT-MEDIUM and font-[600] it updates the weight, even though I havne't customsed that in my css. Maybe because tailwind?
-		text = text.replace(/\*\*(.+?)\*\*/g, '<span class="font-medium">$1</span>');
-		text = text.replace(/__(.+?)__/g, '<span class="font-medium">$1</span>');
+		// Split the text by new lines to create paragraphs
+		const paragraphs = text.split('\n');
 
-		// Replace italic markings (surrounded by single * or _)
-		// Making sure we don't catch the bold markings by using negative lookaheads and lookbehinds
-		text = text.replace(/(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)/g, '<em>$1</em>');
-		text = text.replace(/(?<!_)_(?!_)(.+?)(?<!_)_(?!_)/g, '<em>$1</em>');
+		// Format each paragraph
+		const formattedParagraphs = paragraphs.map((paragraph) => {
+			let formatted = paragraph;
 
-		// const paragraphs = text.split('\n').map((paragraph) => {
-		// 	let formattedParagraph = paragraph;
+			// Bold
+			formatted = formatted.replace(/\*\*(.+?)\*\*/g, '<span class="font-medium">$1</span>');
+			formatted = formatted.replace(/__(.+?)__/g, '<span class="font-medium">$1</span>');
 
-		// 	// Bold
-		// 	formattedParagraph = formattedParagraph.replace(
-		// 		/\*\*(\S.+?\S)\*\*/g,
-		// 		'<span class="custom-font-weight">$1</span>'
-		// 	);
+			// Italic
+			formatted = formatted.replace(/(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)/g, '<em>$1</em>');
+			formatted = formatted.replace(/(?<!_)_(?!_)(.+?)(?<!_)_(?!_)/g, '<em>$1</em>');
 
-		// 	// Italic
-		// 	formattedParagraph = formattedParagraph.replace(/\*(\S.+?)\*/g, '<em>$1</em>');
+			return `<p class="my-[0.4rem]">${formatted}</p>`;
+		});
 
-		// 	return formattedParagraph;
-		// });
-
-		// return paragraphs;
-		return text;
+		return formattedParagraphs.join('');
 	}
+
+	// function formatText(text) {
+	// 	// Bold IF I USE FONT-SEMIBOLD and FONT-MEDIUM and font-[600] it updates the weight, even though I havne't customsed that in my css. Maybe because tailwind?
+	// 	text = text.replace(/\*\*(.+?)\*\*/g, '<span class="font-medium">$1</span>');
+	// 	text = text.replace(/__(.+?)__/g, '<span class="font-medium">$1</span>');
+
+	// 	// Replace italic markings (surrounded by single * or _)
+	// 	// Making sure we don't catch the bold markings by using negative lookaheads and lookbehinds
+	// 	text = text.replace(/(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)/g, '<em>$1</em>');
+	// 	text = text.replace(/(?<!_)_(?!_)(.+?)(?<!_)_(?!_)/g, '<em>$1</em>');
+
+	// 	// const paragraphs = text.split('\n').map((paragraph) => {
+	// 	// 	let formattedParagraph = paragraph;
+
+	// 	// 	// Bold
+	// 	// 	formattedParagraph = formattedParagraph.replace(
+	// 	// 		/\*\*(\S.+?\S)\*\*/g,
+	// 	// 		'<span class="custom-font-weight">$1</span>'
+	// 	// 	);
+
+	// 	// 	// Italic
+	// 	// 	formattedParagraph = formattedParagraph.replace(/\*(\S.+?)\*/g, '<em>$1</em>');
+
+	// 	// 	return formattedParagraph;
+	// 	// });
+
+	// 	// return paragraphs;
+	// 	return text;
+	// }
 </script>
 
-<div class="flex">
+<div class="flex items-stretch">
 	{#each aboutData as i}
 		<div class=" test max-w-[700px] flex flex-col w-[90vw] mr-10">
 			<div
-				class="text-xl p-5 max-w-fit translate-y-[50%] {i.color === 'Dark'
+				class="  text-xl p-5 max-w-fit translate-y-[50%] {i.color === 'Dark'
 					? 'bg-primaryDark border-primary text-primary'
 					: 'bg-primary border-primaryDark text-primaryDark'}  font-medium border rounded-2xl"
 			>
@@ -45,7 +67,7 @@
 			</div>
 
 			<div
-				class="text-[22px] px-7 py-[5rem] justify-center whitespace-pre-line border rounded-2xl {i.color ===
+				class="text-[22px] px-7 pt-[3.4rem] pb-[1rem] justify-center whitespace-pre-line border rounded-2xl flex flex-1 flex-col {i.color ===
 				'Dark'
 					? 'bg-primaryDark border-primary text-primary'
 					: 'bg-primary border-primaryDark text-primaryDark'}"

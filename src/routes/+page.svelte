@@ -1,6 +1,7 @@
 <script lang="ts">
 	import About from '$lib/components/About.svelte';
 	import Navbar from '$lib/components/Navbar.svelte';
+	import Project from '$lib/components/Project.svelte';
 
 	// In the +page.server.ts file, I can return something other than 'data'. in this case, I am returning 'records', which drills down into the object. but whatever goes into the return needs to be accessed with export let data on +page.svelte
 	export let data;
@@ -15,6 +16,7 @@
 		</div>
 		<div class="mt-[50vh]">
 			<About aboutData={data.aboutTable} />
+			<Project />
 		</div>
 	</div>
 </div>
