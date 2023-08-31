@@ -10,7 +10,7 @@
 </script>
 
 <div class="flex justify-center font-genSans">
-	<div class="flex flex-col mx-[5%] w-full max-w-[1530px]">
+	<div class="flex flex-col max-w-[92%] w-[1530px]">
 		<div class="mt-[2rem]">
 			<Navbar />
 		</div>
