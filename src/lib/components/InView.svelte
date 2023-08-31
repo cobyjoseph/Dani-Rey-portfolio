@@ -2,7 +2,6 @@
 	import { onMount } from 'svelte';
 
 	let isVisible = false;
-	// let translateAmount = 1;
 
 	let element;
 
@@ -10,9 +9,6 @@
 		isVisible = e[0].isIntersecting;
 	};
 
-	// const handleScroll = () => {
-	// 	scrollAmount = window.scrollY;
-	// };
 
 	onMount(() => {
 		const root = null;
