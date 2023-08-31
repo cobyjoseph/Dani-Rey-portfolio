@@ -1,7 +1,10 @@
 <script lang="ts">
 	import { currentLanguage } from '$lib/stores/LanguageStore';
+	import InView from '$lib/components/InView.svelte';
 
 	export let aboutData;
+
+	let scrollY: number;
 
 	function formatText(text) {
 		// Split the text by new lines to create paragraphs
@@ -24,36 +27,11 @@
 
 		return formattedParagraphs.join('');
 	}
-
-	// function formatText(text) {
-	// 	// Bold IF I USE FONT-SEMIBOLD and FONT-MEDIUM and font-[600] it updates the weight, even though I havne't customsed that in my css. Maybe because tailwind?
-	// 	text = text.replace(/\*\*(.+?)\*\*/g, '<span class="font-medium">$1</span>');
-	// 	text = text.replace(/__(.+?)__/g, '<span class="font-medium">$1</span>');
-
-	// 	// Replace italic markings (surrounded by single * or _)
-	// 	// Making sure we don't catch the bold markings by using negative lookaheads and lookbehinds
-	// 	text = text.replace(/(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)/g, '<em>$1</em>');
-	// 	text = text.replace(/(?<!_)_(?!_)(.+?)(?<!_)_(?!_)/g, '<em>$1</em>');
-
-	// 	// const paragraphs = text.split('\n').map((paragraph) => {
-	// 	// 	let formattedParagraph = paragraph;
-
-	// 	// 	// Bold
-	// 	// 	formattedParagraph = formattedParagraph.replace(
-	// 	// 		/\*\*(\S.+?\S)\*\*/g,
-	// 	// 		'<span class="custom-font-weight">$1</span>'
-	// 	// 	);
-
-	// 	// 	// Italic
-	// 	// 	formattedParagraph = formattedParagraph.replace(/\*(\S.+?)\*/g, '<em>$1</em>');
-
-	// 	// 	return formattedParagraph;
-	// 	// });
-
-	// 	// return paragraphs;
-	// 	return text;
-	// }
 </script>
+
+<svelte:window bind:scrollY />;
+
+{scrollY}
 
 <div class="flex items-stretch">
 	<div class=" min-w-[20%] flex">
@@ -95,50 +73,38 @@
 			{/if}
 		</div>
 	</div>
-	<!-- {#each aboutData as i}
-		<div class="  max-w-[700px] flex flex-col">
-			<div
-				class="  text-lg xl:text-xl p-5 max-w-fit translate-y-[50%] {i.color === 'Dark'
-					? 'bg-primaryDark border-primary text-primary'
-					: 'bg-primary border-primaryDark text-primaryDark'}  font-medium border rounded-2xl"
-			>
-				{$currentLanguage === 'En' ? i.nameEn : i.nameSp}
-			</div>
-
-			<div
-				class=" text-[18px] xl:text-[20px] sm:min-w-[40rem] mr-10 px-7 pt-[3.4rem] pb-[1rem] whitespace-pre-line border rounded-2xl flex flex-1 flex-col {i.color ===
-				'Dark'
-					? 'bg-primaryDark border-primary text-primary'
-					: 'bg-primary border-primaryDark text-primaryDark'}"
-			>
-				{@html formatText($currentLanguage === 'En' ? i.textEn : i.textSp)}
-			</div>
-		</div>
-	{/each} -->
 
 	{#each aboutData as i, index}
-		<div class={`max-w-[700px] flex flex-col ${index === 1 ? '-translate-x-[90%]' : ''}`}>
+		<InView let:isVisible>
+			{isVisible}
 			<div
-				class={`text-lg xl:text-xl p-5 max-w-fit translate-y-[50%] ${
-					i.color === 'Dark'
-						? 'bg-primaryDark border-primary text-primary'
-						: 'bg-primary border-primaryDark text-primaryDark'
-				}  font-medium border rounded-2xl`}
+				style={`transform: translateX(-${scrollY}px)`}
+				class={`max-w-[700px] flex flex-col ${index === 1 ? `-translate-x-[${scrollY}px]` : ''}`}
 			>
-				{$currentLanguage === 'En' ? i.nameEn : i.nameSp}
+				<div
+					class={`text-lg xl:text-xl p-5 max-w-fit translate-y-[50%] ${
+						i.color === 'Dark'
+							? 'bg-primaryDark border-primary text-primary'
+							: 'bg-primary border-primaryDark text-primaryDark'
+					} font-medium border rounded-2xl`}
+				>
+					{$currentLanguage === 'En' ? i.nameEn : i.nameSp}
+				</div>
+				<div
+					class={`text-[18px] xl:text-[20px] sm:min-w-[40rem] mr-10 px-7 pt-[3.4rem] pb-[1rem] whitespace-pre-line border rounded-2xl flex flex-1 flex-col ${
+						i.color === 'Dark'
+							? 'bg-primaryDark border-primary text-primary'
+							: 'bg-primary border-primaryDark text-primaryDark'
+					}`}
+				>
+					{@html formatText($currentLanguage === 'En' ? i.textEn : i.textSp)}
+				</div>
 			</div>
-			<div
-				class={`text-[18px] xl:text-[20px] sm:min-w-[40rem] mr-10 px-7 pt-[3.4rem] pb-[1rem] whitespace-pre-line border rounded-2xl flex flex-1 flex-col ${
-					i.color === 'Dark'
-						? 'bg-primaryDark border-primary text-primary'
-						: 'bg-primary border-primaryDark text-primaryDark'
-				}`}
-			>
-				{@html formatText($currentLanguage === 'En' ? i.textEn : i.textSp)}
-			</div>
-		</div>
+		</InView>
 	{/each}
 </div>
+
+<div class="mb-[10rem]">hi</div>
 
 <style>
 	.transform-card {
