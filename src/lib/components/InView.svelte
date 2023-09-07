@@ -6,6 +6,7 @@
 	let element;
 
 	const handleIntersect = (e) => {
+		console.log('Intersection Event: ', e);
 		isVisible = e[0].isIntersecting;
 	};
 

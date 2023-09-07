@@ -11,6 +11,22 @@
 
 	let dynamicRootMargin: string;
 
+	let gridColumnWidth = 0; // You'll get this value dynamically.
+	let columnGap = 40; // The gap between your grid columns.
+	let endPosition = gridColumnWidth * 3 + columnGap * 2; // Example, this depends on your specific grid setup.
+
+	let translateX: number;
+
+	$: {
+		// Assuming `endPosition` is your end position and 1000 is some scrollY position where the transition should end
+		let scrollFactor = scrollY / 1000;
+
+		if (scrollFactor >= 1) scrollFactor = 1; // cap it to 1
+		if (scrollFactor < 0) scrollFactor = 0; // minimum zero
+
+		translateX = scrollFactor * endPosition;
+	}
+
 	$: if (cardHeight) {
 		dynamicRootMargin = `0px 0px -${cardHeight}px 0px`;
 	}
@@ -47,6 +63,10 @@ CARD HEIGHT {cardHeight}
 	dynamic root margin : {dynamicRootMargin}
 </div>
 
+<div>
+	end position: {endPosition}
+</div>
+
 <div class="grid grid-cols-6 row gap-[40px] border">
 	<div class=" col-span-2 flex items-center justify-center border border-green-400">
 		<div class=" w-[93%]">
@@ -67,7 +87,7 @@ CARD HEIGHT {cardHeight}
 				{isVisible}
 				<div
 					bind:clientHeight={cardHeight}
-					style={`${index === 1 && isVisible ? `transform: translateX(-${scrollY}px)` : ''}`}
+					style={`${index === 1 && isVisible ? `transform: translateX(-${translateX}px)` : ''}`}
 					class=""
 				>
 					<div
