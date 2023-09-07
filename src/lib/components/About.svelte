@@ -48,7 +48,7 @@
 		<div
 			class="row-span-1 outline w-full {index === 0
 				? 'col-start-3 col-end-6'
-				: 'col-start-6 col-end-auto'}"
+				: 'col-start-6 col-end-auto'} {index === 1 ? 'overflow-card' : ''}"
 		>
 			<InView let:isVisible>
 				{isVisible}
@@ -77,43 +77,10 @@
 
 <div class="mb-[10rem]">hi</div>
 
-<!-- class={`max-w-[700px] flex flex-col ${index === 1 ? `-translate-x-[${scrollY}px]` : ''}`} -->
-
-<!-- <div class="flex items-stretch">
-	<div class=" min-w-[20%] flex">
-		<div class="max-w-[90%] flex">
-			{#if $currentLanguage === 'En'}
-				<img src={aboutTextSp} alt="" class="w-full" />
-			{/if}
-		</div>
-	</div>
-
-	{#each aboutData as i, index}
-		<InView let:isVisible>
-			{isVisible}
-			<div
-				style={`${index === 1 ? `transform: translateX(-${scrollY}px)` : ''}`}
-				class="max-w-[700px] flex flex-col"
-			>
-				<div
-					class={`text-lg xl:text-xl p-5 max-w-fit translate-y-[50%] ${
-						i.color === 'Dark'
-							? 'bg-primaryDark border-primary text-primary'
-							: 'bg-primary border-primaryDark text-primaryDark'
-					} font-medium border rounded-2xl`}
-				>
-					{$currentLanguage === 'En' ? i.nameEn : i.nameSp}
-				</div>
-				<div
-					class={`text-[18px] xl:text-[20px] sm:min-w-[40rem] mr-10 px-7 pt-[3.4rem] pb-[1rem] whitespace-pre-line border rounded-2xl flex flex-1 flex-col ${
-						i.color === 'Dark'
-							? 'bg-primaryDark border-primary text-primary'
-							: 'bg-primary border-primaryDark text-primaryDark'
-					}`}
-				>
-					{@html formatText($currentLanguage === 'En' ? i.textEn : i.textSp)}
-				</div>
-			</div>
-		</InView>
-	{/each}
-</div> -->
+<style>
+	.overflow-card {
+		grid-column-start: 6;
+		grid-column-end: 9;
+		width: calc(100% * 3); /* Force it to take the width of 3 columns */
+	}
+</style>
