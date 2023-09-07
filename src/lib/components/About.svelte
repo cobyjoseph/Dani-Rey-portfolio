@@ -34,8 +34,8 @@
 
 {scrollY}
 
-<div class="grid grid-cols-6 row gap-[40px] outline">
-	<div class=" col-span-2 flex items-center justify-center outline">
+<div class="grid grid-cols-6 row gap-[40px] border">
+	<div class=" col-span-2 flex items-center justify-center border border-green-400">
 		<div class=" w-[93%]">
 			{#if $currentLanguage === 'En'}
 				<img src={aboutTextSp} alt="" class="w-full" />
@@ -46,9 +46,9 @@
 	<!-- CARDS BELOW -->
 	{#each aboutData as i, index}
 		<div
-			class="row-span-1 outline w-full {index === 0
+			class="row-span-1  border border-red-500 w-full {index === 0
 				? 'col-start-3 col-end-6'
-				: 'col-start-6 col-end-auto'} {index === 1 ? 'overflow-card' : ''}"
+				: 'col-start-6 col-end-auto'} {index === 1 ? 'overflow-card ' : ''}"
 		>
 			<InView let:isVisible>
 				{isVisible}
@@ -80,7 +80,7 @@
 <style>
 	.overflow-card {
 		grid-column-start: 6;
-		grid-column-end: 9;
+		/* grid-column-end: 9; */
 		width: calc(100% * 3); /* Force it to take the width of 3 columns */
 	}
 </style>
