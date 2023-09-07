@@ -1,20 +1,17 @@
-<script lang="ts">
+<script>
 	import { onMount } from 'svelte';
+	export let dynamicRootMargin = '0px';
 
 	let isVisible = false;
-
 	let element;
 
 	const handleIntersect = (e) => {
 		isVisible = e[0].isIntersecting;
 	};
 
-
 	onMount(() => {
 		const root = null;
-		const rootMargin = `0px 0px 350px 0px`;
-		const options = { root, rootMargin };
-
+		const options = { root, rootMargin: dynamicRootMargin };
 		const observer = new IntersectionObserver(handleIntersect, options);
 		observer.observe(element);
 	});

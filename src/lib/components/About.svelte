@@ -3,9 +3,17 @@
 	import InView from '$lib/components/InView.svelte';
 	import aboutTextSp from '$lib/assets/AboutTextSp.svg';
 
-	export let aboutData;
+	export let aboutData: number;
+
+	let cardHeight: number;
 
 	let scrollY: number;
+
+	let dynamicRootMargin: string;
+
+	$: if (cardHeight) {
+		dynamicRootMargin = `0px 0px -${cardHeight}px 0px`;
+	}
 
 	function formatText(text) {
 		// Split the text by new lines to create paragraphs
@@ -33,6 +41,11 @@
 <svelte:window bind:scrollY />;
 
 {scrollY}
+CARD HEIGHT {cardHeight}
+
+<div class="bg-blue-200">
+	dynamic root margin : {dynamicRootMargin}
+</div>
 
 <div class="grid grid-cols-6 row gap-[40px] border">
 	<div class=" col-span-2 flex items-center justify-center border border-green-400">
@@ -46,13 +59,17 @@
 	<!-- CARDS BELOW -->
 	{#each aboutData as i, index}
 		<div
-			class="row-span-1  border border-red-500 w-full {index === 0
+			class="row-span-1 border border-red-500 w-full {index === 0
 				? 'col-start-3 col-end-6'
 				: 'col-start-6 col-end-auto'} {index === 1 ? 'overflow-card ' : ''}"
 		>
-			<InView let:isVisible>
+			<InView {dynamicRootMargin} let:isVisible>
 				{isVisible}
-				<div style={`${index === 1 ? `transform: translateX(-${scrollY}px)` : ''}`} class="">
+				<div
+					bind:clientHeight={cardHeight}
+					style={`${index === 1 && isVisible ? `transform: translateX(-${scrollY}px)` : ''}`}
+					class=""
+				>
 					<div
 						class="text-xl xl:text-2xl p-5 col-span-4 max-w-fit translate-y-[50%] font-medium border rounded-2xl {i.color ===
 						'Dark'
