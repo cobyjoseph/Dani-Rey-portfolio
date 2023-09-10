@@ -77,7 +77,7 @@ CARD HEIGHT {cardHeight}
 	</div>
 
 	<!-- CARDS BELOW -->
-	<!-- {#each aboutData as i, index}
+	{#each aboutData as i, index}
 		<div
 			class="row-span-1 border border-red-500 w-full {index === 0
 				? 'col-start-3 col-end-6'
@@ -109,7 +109,7 @@ CARD HEIGHT {cardHeight}
 				</div>
 			</InView>
 		</div>
-	{/each} -->
+	{/each}
 </div>
 
 <div class="mb-[10rem]">hi</div>
