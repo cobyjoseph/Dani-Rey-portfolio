@@ -77,37 +77,41 @@ CARD HEIGHT {cardHeight}
 	</div>
 
 	<!-- CARDS BELOW -->
+
 	{#each aboutData as i, index}
 		<div
-			class="row-span-1 border border-red-500 w-full {index === 0
+			class=" flex flex-col items-stretch flex-grow bg-green-500 border border-red-500 w-full {index ===
+			0
 				? 'col-start-3 col-end-6'
 				: 'col-start-6 col-end-auto'} {index === 1 ? 'overflow-card ' : ''}"
 		>
-			<InView {dynamicRootMargin} let:isVisible>
-				{isVisible}
-				<div
-					bind:clientHeight={cardHeight}
-					style={`${index === 1 && isVisible ? `transform: translateX(-${translateX}px)` : ''}`}
-					class=""
-				>
+			<div class="flex flex-grow bg-blue-400">
+				<InView {dynamicRootMargin} let:isVisible>
+					{isVisible}
 					<div
-						class="text-xl xl:text-2xl p-5 col-span-4 max-w-fit translate-y-[50%] font-medium border rounded-2xl {i.color ===
-						'Dark'
-							? 'bg-primaryDark border-primary text-primary'
-							: 'bg-primary border-primaryDark text-primaryDark'}"
+						bind:clientHeight={cardHeight}
+						style={`${index === 1 && isVisible ? `transform: translateX(-${translateX}px)` : ''}`}
+						class="flex flex-col flex-grow bg-green-400 h-full"
 					>
-						{$currentLanguage === 'En' ? i.nameEn : i.nameSp}
+						<div
+							class="text-xl xl:text-2xl p-5 col-span-4 max-w-fit translate-y-[50%] font-medium border rounded-2xl {i.color ===
+							'Dark'
+								? 'bg-primaryDark border-primary text-primary'
+								: 'bg-primary border-primaryDark text-primaryDark'}"
+						>
+							{$currentLanguage === 'En' ? i.nameEn : i.nameSp}
+						</div>
+						<div
+							class=" text-[18px] xl:text-[22px] px-7 pt-[3.4rem] pb-[1rem] whitespace-pre-line border rounded-2xl flex flex-col flex-grow {i.color ===
+							'Dark'
+								? 'bg-primaryDark border-primary text-primary'
+								: 'bg-primary border-primaryDark text-primaryDark'}"
+						>
+							{@html formatText($currentLanguage === 'En' ? i.textEn : i.textSp)}
+						</div>
 					</div>
-					<div
-						class="text-[18px] xl:text-[22px] px-7 pt-[3.4rem] pb-[1rem] whitespace-pre-line border rounded-2xl flex flex-1 flex-col {i.color ===
-						'Dark'
-							? 'bg-primaryDark border-primary text-primary'
-							: 'bg-primary border-primaryDark text-primaryDark'}"
-					>
-						{@html formatText($currentLanguage === 'En' ? i.textEn : i.textSp)}
-					</div>
-				</div>
-			</InView>
+				</InView>
+			</div>
 		</div>
 	{/each}
 </div>
