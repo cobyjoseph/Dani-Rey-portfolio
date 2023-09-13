@@ -29,7 +29,7 @@
 
 <div class="flex justify-center font-genSans">
 	<div class="flex flex-col max-w-[92%] w-[1530px]">
-		<!-- <DevGrid /> -->
+		<DevGrid />
 		<div class="mt-[2rem]">
 			<Navbar />
 		</div>
