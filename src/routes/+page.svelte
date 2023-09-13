@@ -12,7 +12,7 @@
 </script>
 
 <svg
-	class="absolute -z-10 w-full mt-[2%]"
+	class="absolute -z-10 w-full top-5"
 	width="1728"
 	height="737"
 	viewBox="0 0 1728 737"
