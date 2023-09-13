@@ -2,6 +2,7 @@ const airtableApiKey = import.meta.env.VITE_AIRTABLE_API_KEY;
 const airtableBaseId = import.meta.env.VITE_AIRTABLE_BASE_ID;
 const airtableAboutTableId = import.meta.env.VITE_AIRTABLE_ABOUT_ID;
 const aboutEndpoint = `https://api.airtable.com/v0/${airtableBaseId}/${airtableAboutTableId}?sort[0][field]=Order&sort[0][direction]=asc`;
+const projectsEndpoint = `https://api.airtable.com/v0/${airtableBaseId}/${airtableProjectsTableId}`;
 //just create more endpoints for each table
 
 export async function load({ fetch }) {
@@ -26,8 +27,25 @@ export async function load({ fetch }) {
 			color: record.fields['Color']
 		}));
 
+		const projectsTable = data.records.map((record) => ({
+			titleEn: record.fields['Title english'],
+			titleSp: record.fields['Title espagnol'],
+			descriptionEn: record.fields['Description english'],
+			descriptionSp: record.fields['Description espagnol'],
+			linkTitleEn: record.fields['Link title english'],
+			linkTitleSp: record.fields['Link title espagnol'],
+			link: record.fields['Link'],
+			brandIdentity: record.fields['Brand identity'],
+			brandDesignKit: record.fields['Brand design kit'],
+			webDesign: record.fields['Web design'],
+			stationaryDesign: record.fields['Stationary design'],
+			cobranding: record.fields['Cobranding'],
+			estrategia: record.fields['Estrategia']
+		}));
+
 		return {
-			aboutTable
+			aboutTable,
+			projectsTable
 		};
 	} catch (error) {
 		console.error('Error in load:', error.message);

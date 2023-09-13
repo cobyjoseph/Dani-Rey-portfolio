@@ -80,18 +80,17 @@ CARD HEIGHT {cardHeight}
 
 	{#each aboutData as i, index}
 		<div
-			class=" flex flex-col items-stretch flex-grow bg-green-500 border border-red-500 w-full {index ===
-			0
+			class=" flex flex-col items-stretch flex-grow bg-green-500 w-full {index === 0
 				? 'col-start-3 col-end-6'
 				: 'col-start-6 col-end-auto'} {index === 1 ? 'overflow-card ' : ''}"
 		>
-			<div class="flex flex-grow bg-blue-400">
+			<div class="flex flex-grow bg-blue-400 w-full">
 				<InView {dynamicRootMargin} let:isVisible>
 					{isVisible}
 					<div
 						bind:clientHeight={cardHeight}
 						style={`${index === 1 && isVisible ? `transform: translateX(-${translateX}px)` : ''}`}
-						class="flex flex-col flex-grow bg-green-400 h-full"
+						class="flex flex-col flex-grow bg-green-400 h-full w-full"
 					>
 						<div
 							class="text-xl xl:text-2xl p-5 col-span-4 max-w-fit translate-y-[50%] font-medium border rounded-2xl {i.color ===
@@ -102,7 +101,7 @@ CARD HEIGHT {cardHeight}
 							{$currentLanguage === 'En' ? i.nameEn : i.nameSp}
 						</div>
 						<div
-							class=" text-[18px] xl:text-[22px] px-7 pt-[3.4rem] pb-[1rem] whitespace-pre-line border rounded-2xl flex flex-col flex-grow {i.color ===
+							class="w-full text-[18px] xl:text-[22px] px-7 pt-[3.4rem] pb-[1rem] whitespace-pre-line border rounded-2xl flex flex-col flex-grow {i.color ===
 							'Dark'
 								? 'bg-primaryDark border-primary text-primary'
 								: 'bg-primary border-primaryDark text-primaryDark'}"
@@ -115,8 +114,6 @@ CARD HEIGHT {cardHeight}
 		</div>
 	{/each}
 </div>
-
-<div class="mb-[10rem]">hi</div>
 
 <style>
 	.overflow-card {
