@@ -12,7 +12,7 @@
 		display: grid;
 		grid-template-columns: repeat(6, 1fr);
 		gap: 40px; /* Adjust as needed for your small buffer */
-		height: 100vh; /* Make it full height */
+		height: 500vh; /* Make it full height */
 		position: absolute; /* So it overlays on top of other content */
 		pointer-events: none; /* So you can click through it */
 		z-index: 9999; /* High z-index to make sure it's above other elements */

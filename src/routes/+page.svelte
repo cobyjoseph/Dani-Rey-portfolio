@@ -34,7 +34,7 @@
 			<Navbar />
 		</div>
 		<Landing />
-		<div class="mt-[50vh]">
+		<div>
 			<About aboutData={data.aboutTable} />
 			<Project />
 		</div>
