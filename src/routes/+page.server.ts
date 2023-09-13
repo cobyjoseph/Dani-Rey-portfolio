@@ -1,6 +1,7 @@
 const airtableApiKey = import.meta.env.VITE_AIRTABLE_API_KEY;
 const airtableBaseId = import.meta.env.VITE_AIRTABLE_BASE_ID;
 const airtableAboutTableId = import.meta.env.VITE_AIRTABLE_ABOUT_ID;
+const airtableProjectsTableId = import.meta.env.VITE_AIRTABLE_PROJECTS_ID;
 const aboutEndpoint = `https://api.airtable.com/v0/${airtableBaseId}/${airtableAboutTableId}?sort[0][field]=Order&sort[0][direction]=asc`;
 const projectsEndpoint = `https://api.airtable.com/v0/${airtableBaseId}/${airtableProjectsTableId}`;
 //just create more endpoints for each table
@@ -12,14 +13,18 @@ export async function load({ fetch }) {
 	};
 
 	try {
-		const res = await fetch(aboutEndpoint, { headers });
-		if (!res.ok) {
-			throw new Error(`Error fetching data: ${res.statusText}`);
+		const [aboutRes, projectsRes] = await Promise.all([
+			fetch(aboutEndpoint, { headers }),
+			fetch(projectsEndpoint, { headers })
+		]);
+
+		if (!aboutRes.ok || !projectsRes.ok) {
+			throw new Error(`Error fetching data: ${aboutRes.statusText || projectsRes.statusText}`);
 		}
 
-		const data = await res.json();
+		const [aboutData, projectsData] = await Promise.all([aboutRes.json(), projectsRes.json()]);
 
-		const aboutTable = data.records.map((record) => ({
+		const aboutTable = aboutData.records.map((record) => ({
 			nameEn: record.fields['Card name english'],
 			nameSp: record.fields['Card name espagnol'],
 			textEn: record.fields['Text english'],
@@ -27,7 +32,7 @@ export async function load({ fetch }) {
 			color: record.fields['Color']
 		}));
 
-		const projectsTable = data.records.map((record) => ({
+		const projectsTable = projectsData.records.map((record) => ({
 			titleEn: record.fields['Title english'],
 			titleSp: record.fields['Title espagnol'],
 			descriptionEn: record.fields['Description english'],

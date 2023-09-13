@@ -3,6 +3,7 @@
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Project from '$lib/components/Project.svelte';
 	import DevGrid from '$lib/components/DevGrid.svelte';
+	import Landing from '$lib/components/Landing.svelte';
 
 	// In the +page.server.ts file, I can return something other than 'data'. in this case, I am returning 'records', which drills down into the object. but whatever goes into the return needs to be accessed with export let data on +page.svelte
 	export let data;
@@ -12,10 +13,11 @@
 
 <div class="flex justify-center font-genSans">
 	<div class="flex flex-col max-w-[92%] w-[1530px]">
-		<DevGrid />
+		<!-- <DevGrid /> -->
 		<div class="mt-[2rem]">
 			<Navbar />
 		</div>
+		<Landing />
 		<div class="mt-[50vh]">
 			<About aboutData={data.aboutTable} />
 			<Project />
