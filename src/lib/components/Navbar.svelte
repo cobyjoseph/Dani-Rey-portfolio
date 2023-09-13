@@ -3,7 +3,7 @@
 </script>
 
 <div class="flex justify-between items-center">
-	<div class=" ">
+	<div class=" scale-150 ">
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			class="  "
