@@ -14,15 +14,17 @@
 
 <img src={landingGif} alt="" class="w-full" />
 
-<div class="  flex text-primaryDark text-xs font-bold font-dmSans justify-end mr-[3.7em]">
+<div
+	class="  flex text-primaryDark text-xs font-bold font-dmSans justify-end w-[75%] mx-auto"
+>
 	<div
-		class="outline-primaryDark outline outline-[1px] py-[14px] px-[18px] rounded-[30px] -translate-y-[13rem]"
+		class="outline-primaryDark outline outline-[1px] py-[14px] px-[18px] rounded-[30px] translateClamp"
 	>
 		{$currentLanguage === 'En' ? 'Graphic Design' : 'Diseño Gráfico'}
 	</div>
 </div>
 
-<div class="-translate-y-[9rem] mx-auto w-[75%]">
+<div class="translateClamp2 mx-auto lg:w-[75%] w-full">
 	<div class="  h-[1px] bg-black" />
 
 	<div class="text-primaryDark text-[44px] font-medium font-genSans mt-5 flex justify-between">
@@ -43,3 +45,13 @@
 	<!-- left text -->
 	<!-- right text -->
 </div>
+
+<style>
+	.translateClamp {
+		transform: translateY(clamp(-18rem, calc(-2rem - 12vw), -3rem));
+	}
+
+	.translateClamp2 {
+		transform: translateY(clamp(-16rem, calc(-0rem - 12vw), -1rem));
+	}
+</style>

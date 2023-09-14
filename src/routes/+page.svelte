@@ -35,7 +35,7 @@
 		<div class="mt-[3.5rem]">
 			<Navbar />
 		</div>
-		<div class=" -translate-y-[10rem]">
+		<div class=" -translate-y-[4rem] lg:-translate-y-[10rem] ">
 			<Landing />
 		</div>
 		<div>
