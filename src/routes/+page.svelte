@@ -11,7 +11,7 @@
 	console.log('about table', data.aboutTable);
 </script>
 
-<!-- <svg
+<svg
 	class="absolute -z-10 w-full top-5"
 	width="1728"
 	height="737"
@@ -25,7 +25,7 @@
 		stroke-width="38"
 		stroke-miterlimit="10"
 	/>
-</svg> -->
+</svg>
 
 
 
