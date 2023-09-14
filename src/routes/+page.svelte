@@ -27,20 +27,20 @@
 	/>
 </svg>
 
-
-
 <div class="flex justify-center font-genSans">
 	<div class="flex flex-col max-w-[90%] w-[1530px]">
 		<!-- <DevGrid /> -->
-		<div class="mt-[3.5rem]">
+		<div class="mt-[3rem]">
 			<Navbar />
 		</div>
-		<div class=" -translate-y-[4rem] lg:-translate-y-[10rem] ">
+		<div class=" -translate-y-[4rem] lg:-translate-y-[10rem]">
 			<Landing />
-		</div>
-		<div>
-			<About aboutData={data.aboutTable} />
-			<Project />
+			<div class=" -translate-y-[8rem] 2xl:-translate-y-[12rem]">
+				<About aboutData={data.aboutTable} />
+				<div class="mt-10">
+					<Project projectsData={data.projectsTable} />
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
