@@ -60,90 +60,14 @@
 				</div>
 
 				<!-- tags -->
-				<div class="flex gap-3 text-primary text-xs font-bold font-genSans">
-					<div class="bg-primaryDark py-[0.875rem] px-[1.125rem] rounded-[1.875rem]">
-						{#if $currentLanguage === 'En'}
-							{#if i.brandIdentity === true}
-								Brand itentity
-							{/if}
-
-							{#if i.brandDesignKit === true}
-								Brand Design Kit
-							{/if}
-
-							{#if i.webDesign === true}
-								Web Design
-							{/if}
-
-							{#if i.stationaryDesign === true}
-								Stationary Design
-							{/if}
-
-							{#if i.socialMediaDesign === true}
-								Social Media Design
-							{/if}
-
-							{#if i.strategy === true}
-								Strategy
-							{/if}
-
-							{#if i.packagingDesign === true}
-								Packaging Design
-							{/if}
-
-							{#if i.productDesign === true}
-								Product Design
-							{/if}
-
-							{#if i.uxUi === true}
-								UX/UI
-							{/if}
-
-							{#if i.cobranding === true}
-								Cobranding
-							{/if}
-						{:else}
-							{#if i.identidadMarca === true}
-								Identidad de Marca
-							{/if}
-
-							{#if i.kitIdentidad === true}
-								Kit de Identidad de Marca
-							{/if}
-
-							{#if i.disenoWeb === true}
-								Diseño Web
-							{/if}
-
-							{#if i.disenoPapeleria === true}
-								Diseño de Papelería
-							{/if}
-
-							{#if i.disenoRedes === true}
-								Diseño de Redes Sociales
-							{/if}
-
-							{#if i.estrategia === true}
-								Estrategia
-							{/if}
-
-							{#if i.disenoPackaging === true}
-								Diseño de Packaging
-							{/if}
-
-							{#if i.disenoProducto === true}
-								Diseño de Producto
-							{/if}
-
-							{#if i.disenoUxUi === true}
-								Diseño UX/UI
-							{/if}
-
-							{#if i.cobranding === true}
-								Cobranding
-							{/if}
+				<div class="flex gap-3 text-primary text-xs  font-genSans">
+					{#each Object.keys(tagMappings) as tagKey}
+						{#if i[tagKey] === true}
+							<div class=" min-w-fit bg-primaryDark py-[0.875rem] px-[1.125rem] rounded-[1.875rem]">
+								{tagMappings[tagKey][$currentLanguage]}
+							</div>
 						{/if}
-					</div>
+					{/each}
 				</div>
 			</div>
 
