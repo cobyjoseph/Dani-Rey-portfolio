@@ -40,12 +40,28 @@ export async function load({ fetch }) {
 			linkTitleEn: record.fields['Link title english'],
 			linkTitleSp: record.fields['Link title espagnol'],
 			link: record.fields['Link'],
-			brandIdentity: record.fields['Brand identity'],
-			brandDesignKit: record.fields['Brand design kit'],
-			webDesign: record.fields['Web design'],
-			stationaryDesign: record.fields['Stationary design'],
+
+			brandIdentity: record.fields['Brand Identity'],
+			brandDesignKit: record.fields['Brand Design Kit'],
+			webDesign: record.fields['Web Design'],
+			stationaryDesign: record.fields['Stationary Design'],
+			socialMediaDesign: record.fields['Social Media Design'],
+			strategy: record.fields['Strategy'],
+			packagingDesign: record.fields['Packaging Design'],
+			productDesign: record.fields['Product Design'],
+			uxUi: record.fields['UX/UI'],
+
 			cobranding: record.fields['Cobranding'],
-			estrategia: record.fields['Estrategia']
+
+			identidadMarca: record.fields['Identidad de Marca'],
+			kitIdentidad: record.fields['Kit de Identidad de Marca'],
+			disenoWeb: record.fields['Diseño Web'],
+			disenoPapeleria: record.fields['Diseño de Papelería'],
+			disenoRedes: record.fields['Diseño de Redes Sociales'],
+			estrategia: record.fields['Estrategia'],
+			disenoPackaging: record.fields['Diseño de Packaging'],
+			disenoProducto: record.fields['Diseño de Producto'],
+			disenoUxUi: record.fields['Diseño UX/UI']
 		}));
 
 		return {
