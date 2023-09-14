@@ -4,6 +4,49 @@
 	export let projectsData;
 
 	console.log(projectsData);
+
+	const tagMappings = {
+		identidadMarca: {
+			En: 'Brand Identity',
+			Sp: 'Identidad de Marca'
+		},
+		kitIdentidad: {
+			En: 'Brand Design Kit',
+			Sp: 'Kit de Identidad de Marca'
+		},
+		disenoWeb: {
+			En: 'Web Design',
+			Sp: 'Diseño Web'
+		},
+		disenoPapeleria: {
+			En: 'Stationary Design',
+			Sp: 'Diseño de Papelería'
+		},
+		disenoRedes: {
+			En: 'Social Media Design',
+			Sp: 'Diseño de Redes Sociales'
+		},
+		estrategia: {
+			En: 'Strategy',
+			Sp: 'Estrategia'
+		},
+		disenoPackaging: {
+			En: 'Packaging Design',
+			Sp: 'Diseño de Packaging'
+		},
+		disenoProducto: {
+			En: 'Product Design',
+			Sp: 'Diseño de Producto'
+		},
+		disenoUxUi: {
+			En: 'UX/UI',
+			Sp: 'Diseño UX/UI'
+		},
+		cobranding: {
+			En: 'Cobranding',
+			Sp: 'Cobranding'
+		}
+	};
 </script>
 
 {#each projectsData as i}
