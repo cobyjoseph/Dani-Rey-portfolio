@@ -12,7 +12,7 @@
 	});
 </script>
 
-<img src={landingGif} alt="" class="w-full scale-125" />
+<img src={landingGif} alt="" class="w-full" />
 
 <div class="  flex text-primaryDark text-xs font-bold font-dmSans justify-end mr-[3.7em]">
 	<div
