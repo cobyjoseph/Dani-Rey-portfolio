@@ -1,6 +1,15 @@
 <script lang="ts">
-	import landingGif from '$lib/assets/LandingGif.gif';
+	import landingGif from '$lib/assets/LandingGifImproved.gif';
 	import { currentLanguage } from '$lib/stores/LanguageStore';
+	import { draw, fly, slide } from 'svelte/transition';
+	import { quintOut } from 'svelte/easing';
+	import { onMount } from 'svelte';
+
+	let mounted = false;
+
+	onMount(() => {
+		mounted = true;
+	});
 </script>
 
 <img src={landingGif} alt="" class="w-full scale-125" />
