@@ -28,7 +28,7 @@
 </svg>
 
 <div class="flex justify-center font-genSans">
-	<div class="flex flex-col max-w-[90%] w-[1530px]">
+	<div class="flex flex-col max-w-[86%] w-[1530px]">
 		<!-- <DevGrid /> -->
 		<div class="mt-[3rem]">
 			<Navbar />

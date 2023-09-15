@@ -29,20 +29,20 @@
 			</defs>
 		</svg>
 	</div>
-	<div class="flex gap-3 text-primary text-xs font-bold font-dmSans">
-		<div class=" bg-primaryDark py-[0.875rem] px-[1.125rem] rounded-[1.875rem]">
+	<div class="flex gap-3 text-primary text-[0.75rem] font-bold font-dmSans">
+		<div class=" bg-primaryDark my-auto py-[0.7rem] px-[1rem] rounded-[1.7rem]">
 			{$currentLanguage === 'En' ? 'Projects' : 'Proyectos'}
 		</div>
-		<div class=" bg-primaryDark py-[0.875rem] px-[1.125rem] rounded-[1.875rem]">
+		<div class=" bg-primaryDark my-auto py-[0.7rem] px-[1rem] rounded-[1.7rem]">
 			{$currentLanguage === 'En' ? 'Services' : 'Servicios'}
 		</div>
-		<div class=" bg-primaryDark py-[0.875rem] px-[1.125rem] rounded-[1.875rem]">
+		<div class=" bg-primaryDark my-auto py-[0.7rem] px-[1rem] rounded-[1.7rem]">
 			{$currentLanguage === 'En' ? 'Contact' : 'Contacto'}
 		</div>
 
 		<div>
 			<div
-				class=" bg-primary text-primaryDark py-[0.875rem] px-[1.125rem] rounded-[1.875rem] border-primaryDark border"
+				class=" bg-primary text-primaryDark my-auto py-[0.7rem] px-[1rem] rounded-[1.7rem] border-primaryDark border"
 			>
 				Projects
 			</div>
