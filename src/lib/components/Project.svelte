@@ -51,7 +51,7 @@
 
 {#each projectsData as i}
 	<div class="grid grid-cols-2 border border-primaryDark rounded-3xl">
-		<div class="flex flex-col p-7 justify-between h-[38rem]">
+		<div class="flex flex-col p-7 justify-between max-h-[38rem]">
 			<div>
 				<!-- header -->
 
@@ -71,7 +71,7 @@
 				</div>
 			</div>
 
-			<div>
+			<div class="">
 				<!-- description -->
 
 				<div>
@@ -87,6 +87,7 @@
 		</div>
 		<div>
 			<!-- photo -->
+			<img src={i.photo} alt="Project" class=" " />
 		</div>
 	</div>
 {/each}

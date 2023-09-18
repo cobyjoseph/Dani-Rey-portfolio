@@ -35,22 +35,12 @@ export async function load({ fetch }) {
 		const projectsTable = projectsData.records.map((record) => ({
 			titleEn: record.fields['Title english'],
 			titleSp: record.fields['Title espagnol'],
+			photo: record.fields['Photo'] ? record.fields['Photo'][0].url : null,
 			descriptionEn: record.fields['Description english'],
 			descriptionSp: record.fields['Description espagnol'],
 			linkTitleEn: record.fields['Link title english'],
 			linkTitleSp: record.fields['Link title espagnol'],
 			link: record.fields['Link'],
-
-			// brandIdentity: record.fields['Brand Identity'],
-			// brandDesignKit: record.fields['Brand Design Kit'],
-			// webDesign: record.fields['Web Design'],
-			// stationaryDesign: record.fields['Stationary Design'],
-			// socialMediaDesign: record.fields['Social Media Design'],
-			// strategy: record.fields['Strategy'],
-			// packagingDesign: record.fields['Packaging Design'],
-			// productDesign: record.fields['Product Design'],
-			// uxUi: record.fields['UX/UI'],
-			// cobranding: record.fields['Cobranding'],
 
 			identidadMarca: record.fields['Identidad de Marca'],
 			kitIdentidad: record.fields['Kit de Identidad de Marca'],
@@ -61,7 +51,7 @@ export async function load({ fetch }) {
 			disenoPackaging: record.fields['Diseño de Packaging'],
 			disenoProducto: record.fields['Diseño de Producto'],
 			disenoUxUi: record.fields['Diseño UX/UI'],
-			cobranding: record.fields['Cobranding'],
+			cobranding: record.fields['Cobranding']
 		}));
 
 		return {
