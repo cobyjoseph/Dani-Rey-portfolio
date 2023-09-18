@@ -33,11 +33,11 @@
 		<div class="mt-[3rem]">
 			<Navbar />
 		</div>
-		<div class=" -translate-y-[4rem] lg:-translate-y-[10rem]">
+		<div class=" ">
 			<Landing />
-			<div class=" -translate-y-[8rem] 2xl:-translate-y-[12rem]">
+			<div class=" ">
 				<About aboutData={data.aboutTable} />
-				<div class="mt-10">
+				<div class="">
 					<Project projectsData={data.projectsTable} />
 				</div>
 			</div>
