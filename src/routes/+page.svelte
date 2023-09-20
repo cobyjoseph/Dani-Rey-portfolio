@@ -44,7 +44,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="w-full h-10 bg-primaryDark justify-center flex">
+	<div class="w-full bg-primaryDark justify-center flex">
 		<div class="max-w-[86%] w-[1530px]">
 			<Process />
 		</div>
