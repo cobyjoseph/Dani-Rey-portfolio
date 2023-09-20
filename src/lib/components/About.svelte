@@ -67,11 +67,11 @@ CARD HEIGHT {cardHeight}
 	end position: {endPosition}
 </div>
 
-<div class="grid grid-cols-6 row gap-[40px] border">
+<div class="grid grid-cols-6 row gap-[25px] border">
 	<div class=" col-span-2 flex items-center justify-center border border-green-400">
 		<div class=" w-[93%]">
 			{#if $currentLanguage === 'En'}
-				<img src={aboutTextSp} alt="" class="w-full " />
+				<img src={aboutTextSp} alt="" class="w-full" />
 			{/if}
 		</div>
 	</div>
